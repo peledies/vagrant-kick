@@ -1,0 +1,14 @@
+#!/bin/bash    
+
+function kickit {
+	vagrant ssh -c "sudo service $1 restart"
+}
+
+if [ -z $1 ]
+then
+	read -p "Name the service you want to kick: " -r
+	kickit $REPLY
+else
+	kickit $1
+fi
+
