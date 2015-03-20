@@ -30,10 +30,6 @@
     "restart"
   ],
   "author": "Deac Karns <peledies@gmail.com>",
-  "license": "BSD-2-Clause",
-  "bugs": {
-    "url": "https://github.com/peledies/vagrant-kick/issues"
-  },
   "homepage": "https://github.com/peledies/vagrant-kick",
   "dependencies": {
     "prompt": "~0.2.14",
