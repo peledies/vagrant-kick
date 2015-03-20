@@ -1,7 +1,7 @@
 {
   "name": "vagrant-kick",
   "author": "Deac Karns",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A simple tool to restart vagrant services",
   "main": "vagrant-kick",
   "scripts": {},
