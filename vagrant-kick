@@ -1,14 +1,34 @@
-#!/bin/bash    
+var sys = require('sys');
+var exec = require('child_process').exec;
 
-function kickit {
-	vagrant ssh -c "sudo service $1 restart"
+var colors = require('colors');
+var prompt = require('prompt');
+
+function kickIt(arg){
+    try{
+      exec('vagrant ssh -c "sudo service '+arg+' restart"', function (error, stdout, stderr) {
+        console.log(stdout.cyan);
+        console.log(stderr.red); 
+      });
+    }catch(err){
+      console.log(err); 
+    }
 }
 
-if [ -z $1 ]
-then
-	read -p "Name the service you want to kick: " -r
-	kickit $REPLY
-else
-	kickit $1
-fi
+if(process.argv[2] != undefined){
+  kickIt(process.argv[2]);
+}else{
+  prompt.start();
+  schema = {
+    properties: {
+      s: {
+        message: 'What service would you like to kick?'.cyan
+      , required: true
+      }
+    }
+  }
 
+  prompt.get(schema, function(err, result){
+      kickIt(result.s);
+  });
+}
